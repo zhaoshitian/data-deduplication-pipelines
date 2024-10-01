@@ -8,5 +8,12 @@ Following SD3, we use the SOTA model, [SSCD](https://github.com/facebookresearch
 bash run_extract.sh
 ```
 ## Step2: Clustering
-
+We use the basic K-means algorithm to cluster all the indices.
+```bash
+bash run_cluster.sh
+```
 ## Step3: Data Deduplication
+Following the seudo code in SD3's appendix, we deduplication all the data in each cluster.
+```bash
+bash run_deduplicate.sh
+```
