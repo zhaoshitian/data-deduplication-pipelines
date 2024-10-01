@@ -14,6 +14,7 @@ bash run_cluster.sh
 ```
 ## Step3: Data Deduplication
 Following the seudo code in SD3's appendix, we deduplication all the data in each cluster.
+![seudo_code](./assets/seudo_code_from_sd3.jpg)
 ```bash
 bash run_deduplicate.sh
 ```
