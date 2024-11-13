@@ -101,6 +101,13 @@ def collect_embeds(root_dir):
 
 
 if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser(description="deduplicate")
+    parser.add_argument("--part_index", type=int, default=0)
+    parser.add_argument("--data_file_path", type=str)
+    parser.add_argument("--save_root_path", type=str)
+    args = parser.parse_args()
+    
     # embeddings = np.load("/mnt/petrelfs/zhaoshitian/data/embeds_laion_27M/embeds_part0.npy")[:1000]
     root_dir = "/mnt/petrelfs/gaopeng/swj/sscd/data/Synthesized_data/embeddings/laion_24M"
     embeddings, image_name_list = collect_embeds(root_dir)
