@@ -6,10 +6,10 @@ Following SD3, we use the SOTA model, [SSCD](https://github.com/facebookresearch
 
 ```python
 python embedding_extract.py
---model_path "/path/to/sscd_disc_large.torchscript.pt"
---part_index 0
---data_file_path "/path/to/your_data_file.json"
---save_root_path "/path/to/save_dir"
+  --model_path "/path/to/sscd_disc_large.torchscript.pt"
+  --part_index 0
+  --data_file_path "/path/to/your_data_file.json"
+  --save_root_path "/path/to/save_dir"
 ```
 ## Step2: Clustering
 We use the basic K-means algorithm to cluster all the indices.
