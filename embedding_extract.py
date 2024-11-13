@@ -40,16 +40,21 @@ def checkpath(path):
 
 if __name__ == "__main__":
     import argparse
-    parser = argparse.ArgumentParser(description="gen_internvl")
+    parser = argparse.ArgumentParser(description="extract_embeddings")
+    parser.add_argument("--model_path", type=str)
     parser.add_argument("--part_index", type=int, default=0)
+    parser.add_argument("--data_file_path", type=str)
+    parser.add_argument("--save_root_path", type=str)
     args = parser.parse_args()
 
-    model = torch.jit.load("/mnt/petrelfs/gaopeng/swj/sscd/sscd_disc_large.torchscript.pt").cuda()
-
-    save_root_path = "/mnt/petrelfs/gaopeng/swj/sscd/data/Synthesized_data/embeddings/laion_24M"
-    json_file_path = "/mnt/hwfile/alpha_vl/gaopeng/share_data_bak/data_filter/collect_annotations/data/laion_coarse_24M.json"
+    # model = torch.jit.load("/mnt/petrelfs/gaopeng/swj/sscd/sscd_disc_large.torchscript.pt").cuda()
+    # save_root_path = "/mnt/petrelfs/gaopeng/swj/sscd/data/Synthesized_data/embeddings/laion_24M"
+    # json_file_path = "/mnt/hwfile/alpha_vl/gaopeng/share_data_bak/data_filter/collect_annotations/data/laion_coarse_24M.json"
+    
+    model = torch.jit.load(args.model_path).cuda()
+    save_root_path = args.save_root_path
+    json_file_path = args.data_file_path
     item_list = json.load(open(json_file_path, "r"))[args.part_index*100000: (1+args.part_index)*100000]
-
     embed_list = []
 
     for i, item in tqdm(enumerate(item_list), total=len(item_list)):
